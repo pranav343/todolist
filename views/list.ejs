@@ -1,0 +1,60 @@
+
+
+<%- include('header'); -%>  <!-- thus this is a template for a header file which can be common for multiple pages -->
+  
+    <div class="box" id="heading">
+        <h1>
+            <%= ListTitle%>
+        </h1>
+    </div>
+    <div class="box">
+
+        <% for (var i=0; i<newListItem.length; i++){%>
+            <!--there should be always { here only before %> ex {%> -->
+
+
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newListItem[i] %>
+                </p>
+
+            </div>
+
+            <% } %>
+            <form action="/" method="post" class="item">
+                <input type="text" name="todo1" placeholder="New Item" autocomplete="off"> <!-- autocomplete means suggestions u get when u just type-->
+                <button type="submit" name="button" value=<%= ListTitle %> >+</button>
+            </form>
+    </div>
+
+    <!-- for going to work page click button -->
+
+<form action="/work" method="post">
+    <div class="container">
+        <div class="center">
+            <button type="submit" class="custom-btn btn-15" name="workbtn" value=<%= ListTitle %>>Click to go on <%= BtnTitle %> Page</button>
+        </div>
+      </div>
+      </form>
+
+      <%- include('footer'); -%>  <!-- thus this is a template for a footer file which can be common for multiple pages -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- =--------old code--------=
+<% if (ListTitle==="Saturday" || ListTitle==="Sunday") {%>   (see notes in udemy)
+        
+    <h1 style="color: red" > It's a <%=ListTitle %> !!!</h1>
+
+<%  } else { %>
+<h1 style="color: blue" > It's a <%=ListTitle %> !!!</h1>
+<%  } %> -->
