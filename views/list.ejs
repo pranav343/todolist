@@ -9,19 +9,22 @@
     </div>
     <div class="box">
 
-        <% for (var i=0; i<newListItem.length; i++){%>
-            <!--there should be always { here only before %> ex {%> -->
-
-
+  <!--there should be always { here only before %> ex {%> -->
+    <%    newListItem.forEach(function(item){ %>
+        <form action="/delete" method="post">
             <div class="item">
-                <input type="checkbox">
+                <input type="checkbox" name="checkboxInput" value="<%=item._id %>" onchange="this.form.submit()"> <!--onchange will submit this form when the checkbox is clicked thus we dont need a submit button-->
                 <p>
-                    <%= newListItem[i] %>
+                    <%= item.name %>
                 </p>
 
             </div>
+            <!-- adding a hidden type input which just tells the value what is there in it we use this so that we can easily know the listname from which we want to delete the items -->
+            <input type="hidden" name="listNAME" value=<%= ListTitle%> > </input>
+        </form>
 
-            <% } %>
+       <% }) %>
+     
             <form action="/" method="post" class="item">
                 <input type="text" name="todo1" placeholder="New Item" autocomplete="off"> <!-- autocomplete means suggestions u get when u just type-->
                 <button type="submit" name="button" value=<%= ListTitle %> >+</button>
@@ -30,24 +33,7 @@
 
     <!-- for going to work page click button -->
 
-<form action="/work" method="post">
-    <div class="container">
-        <div class="center">
-            <button type="submit" class="custom-btn btn-15" name="workbtn" value=<%= ListTitle %>>Click to go on <%= BtnTitle %> Page</button>
-        </div>
-      </div>
-      </form>
-
       <%- include('footer'); -%>  <!-- thus this is a template for a footer file which can be common for multiple pages -->
-
-
-
-
-
-
-
-
-
 
 
 <!-- =--------old code--------=
